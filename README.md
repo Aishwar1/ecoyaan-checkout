@@ -102,7 +102,7 @@ Payment Page
 Clone the repository:
 
 ```
-git clone https://github.com/Aishwar/ecoyaan-checkout.git
+git clone https://github.com/Aishwar1/ecoyaan-checkout.git
 ```
 
 Install dependencies:
