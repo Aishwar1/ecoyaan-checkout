@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ecoyaan Checkout Flow (Frontend Assignment)
 
-## Getting Started
+This project is a simplified **checkout flow** inspired by the Ecoyaan platform.
+It demonstrates **Server-Side Rendering (SSR), state management, responsive UI, and a multi-step checkout process** using Next.js.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+
+* **Next.js (App Router)**
+* **React**
+* **Tailwind CSS**
+* **Context API (State Management)**
+* **Next.js API Routes (Mock Backend)**
+
+---
+
+## Features
+
+* Server-Side Rendering for cart data
+* Multi-step checkout flow
+* Shipping address form with validation
+* Order confirmation page
+* Simulated payment process
+* Responsive UI
+
+---
+
+## Checkout Flow
+
+Cart / Order Summary
+↓
+Shipping Address Form
+↓
+Payment Confirmation
+↓
+Order Successful Page
+
+---
+
+## Mock Data
+
+Cart data is fetched from a mock backend using **Next.js API Routes**.
+
+Example:
+
+```json
+{
+  "cartItems": [
+    {
+      "product_id": 101,
+      "product_name": "Bamboo Toothbrush (Pack of 4)",
+      "product_price": 299,
+      "quantity": 2
+    },
+    {
+      "product_id": 102,
+      "product_name": "Reusable Cotton Produce Bags",
+      "product_price": 450,
+      "quantity": 1
+    }
+  ],
+  "shipping_fee": 50,
+  "discount_applied": 0
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Server-Side Rendering
 
-## Learn More
+Cart data is fetched during SSR using an API route.
 
-To learn more about Next.js, take a look at the following resources:
+```
+data/mockData.json
+        ↓
+/api/cart
+        ↓
+SSR fetch in Cart Page
+        ↓
+Render UI
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### State Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The **CheckoutContext** stores the shipping address and makes it accessible across checkout steps.
 
-## Deploy on Vercel
+```
+Context API
+   ↓
+Checkout Page
+   ↓
+Payment Page
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Running Locally
+
+Clone the repository:
+
+```
+git clone https://github.com/Aishwar/ecoyaan-checkout.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Deployment
+
+The project is deployed using **Vercel**.
+
+Live Demo:
+
+```
+https://ecoyaan-checkout-iota.vercel.app
+```
+
+---
+
+## Author
+
+**Aishwar Bhatnagar**
+
+B.Tech, NIT Raipur
+AI / ML & Software Engineering
