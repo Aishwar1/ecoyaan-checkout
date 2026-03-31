@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { CheckoutContext } from "@/context/CheckoutContext";
+import { CheckoutContext } from "@/context/temp";
 import { useRouter } from "next/navigation";
 
 export default function PaymentPage(){

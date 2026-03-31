@@ -1,26 +1,33 @@
 export default function OrderSummary({ cart }) {
-
   const subtotal = cart.cartItems.reduce(
-    (acc, item) =>
-      acc + item.product_price * item.quantity,
+    (acc, item) => acc + item.product_price * item.quantity,
     0
   );
 
   const total = subtotal + cart.shipping_fee;
 
   return (
-    <div className="border p-4 rounded-lg">
+    <div>
+      <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
 
-      <p>Subtotal: ₹{subtotal}</p>
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between">
+          <span>Subtotal</span>
+          <span>₹{subtotal}</span>
+        </div>
 
-      <p>Shipping: ₹{cart.shipping_fee}</p>
+        <div className="flex justify-between">
+          <span>Shipping</span>
+          <span>₹{cart.shipping_fee}</span>
+        </div>
 
-      <hr className="my-2"/>
+        <hr />
 
-      <p className="font-bold">
-        Total: ₹{total}
-      </p>
-
+        <div className="flex justify-between font-bold text-lg">
+          <span>Total</span>
+          <span>₹{total}</span>
+        </div>
+      </div>
     </div>
   );
 }
