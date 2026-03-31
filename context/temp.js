@@ -1,16 +1,26 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const CheckoutContext = createContext();
+const AddressContext = createContext();
 
-export function CheckoutProvider({ children }) {
+export function AddressProvider({ children }) {
+  const [addresses, setAddresses] = useState([]);
 
-  const [address, setAddress] = useState({});
+  useEffect(() => {
+    const data = localStorage.getItem("addresses");
+    if (data) setAddresses(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("addresses", JSON.stringify(addresses));
+  }, [addresses]);
 
   return (
-    <CheckoutContext.Provider value={{ address, setAddress }}>
+    <AddressContext.Provider value={{ addresses, setAddresses }}>
       {children}
-    </CheckoutContext.Provider>
+    </AddressContext.Provider>
   );
 }
+
+export const useAddress = () => useContext(AddressContext);
