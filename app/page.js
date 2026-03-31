@@ -4,10 +4,9 @@ import Link from "next/link";
 
 async function getCart() {
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`,
-    { cache: "no-store" }
-  );
+  const res = await fetch("/api/cart", {
+    cache: "no-store",
+  });
 
   return res.json();
 }
